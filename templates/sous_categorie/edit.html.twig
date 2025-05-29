@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SousCategorie{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <h1>Modifier une sous catégorie</h1>
+        <br>
+        {{ include('sous_categorie/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+        <a class="btn btn-outline-primary" href="{{ path('app_sous_categorie_index') }}">Retour à la liste</a>
+
+        {{ include('sous_categorie/_delete_form.html.twig') }}
+    </div>
+
+{% endblock %}

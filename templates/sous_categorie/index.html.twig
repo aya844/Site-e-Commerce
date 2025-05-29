@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SousCategorie index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <h1>Sous Catégories</h1>
+        <br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sous_categorie in sous_categories %}
+                <tr>
+                    <td>{{ sous_categorie.id }}</td>
+                    <td>{{ sous_categorie.nom }}</td>
+                    <td>{{ sous_categorie.categorie.nom }}</td>
+                    <td>
+                        <a class="btn btn-outline-primary" href="{{ path('app_sous_categorie_show', {'id': sous_categorie.id}) }}">voir</a>
+                        <a class="btn btn-danger" href="{{ path('app_sous_categorie_edit', {'id': sous_categorie.id}) }}">modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a class="btn btn-outline-primary " href="{{ path('app_sous_categorie_new') }}">Créer une nouvelle sous catégorie</a>
+    </div>
+
+{% endblock %}
