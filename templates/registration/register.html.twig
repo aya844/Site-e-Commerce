@@ -3,20 +3,27 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div class="container security-form">
+        <div class="login-form">
+            <h1>Inscription</h1>
 
-    {{ form_errors(registrationForm) }}
+            {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.FirstName) }}
-        {{ form_row(registrationForm.LastName) }}
-        {{ form_row(registrationForm.email) }}
+            {{ form_start(registrationForm) }}
+            {{ form_widget(registrationForm.FirstName, {'attr':{'class':'form form-control', 'placeholder':'Nom'}}) }}
+            <br>
+            {{ form_widget(registrationForm.LastName , {'attr':{'class':'form form-control', 'placeholder':'Prénom'}}) }}
+            <br>
+            {{ form_widget(registrationForm.email, {'attr':{'class':'form form-control', 'placeholder':'email'}}) }}
+            <br>
+            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
+            <br>
+            {{ form_row(registrationForm.agreeTerms) }}
 
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+            <button type="submit " class="btn btn-block btn-primary">Register</button>
+            {{ form_end(registrationForm) }}
+        </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    </div>
+
 {% endblock %}

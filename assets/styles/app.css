@@ -1,3 +1,20 @@
 body {
-    background-color: skyblue;
+    #background-color: skyblue;
+}
+
+.login-form {
+    width : 600px;
+    text-align: center;
+}
+
+.btn-block {
+    width : 100%;
+}
+
+.security-form {
+    display: flex;
+    align-items : center;
+    justify-content :space-around;
+    width: 100%;
+    height: 100Vh;
 }
