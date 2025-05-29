@@ -7,11 +7,13 @@ use App\Form\ProduitsForm;
 use App\Repository\ProduitsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
-#[Route('/produits')]
+#[Route('/editor/produits')]
 final class ProduitsController extends AbstractController
 {
     #[Route(name: 'app_produits_index', methods: ['GET'])]
@@ -23,13 +25,28 @@ final class ProduitsController extends AbstractController
     }
 
     #[Route('/new', name: 'app_produits_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $produit = new Produits();
         $form = $this->createForm(ProduitsForm::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getData();
+            if ($image) {
+                $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFileName = $slugger->slug($originalName);
+                $newFileName= $safeFileName.'-'.uniqid().'.'.$image->guessExtension();
+                try {
+                    $image->move(
+                        $this->getParameter('image_dir'),
+                        $newFileName
+                    );
+                } catch (FileException $exception) {
+                    $product->setImage($newFileName);
+                  }
+
+            }
             $entityManager->persist($produit);
             $entityManager->flush();
 
