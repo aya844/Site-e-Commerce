@@ -20,8 +20,13 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ path('app_categorie') }}">catégories</a></li>
                         <li><a class="dropdown-item" href="{{ path('app_categorie_new') }}">Ajouter une catégorie</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_sous_categorie_index') }}">Sous catégorie</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_sous_categorie_new') }}">Créer une sous catégorie</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ path('app_user') }}">utilisateurs </a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_produits_index') }}">Produits </a></li>
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li><a class="dropdown-item" href="{{ path('app_user') }}">Utilisateurs </a></li>
                     </ul>
                 </li>
                 {% endif %}

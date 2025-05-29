@@ -1,0 +1,17 @@
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n###> symfony/framework-bundle ###\r\n/.env.local\r\n/.env.local.php\r\n/.env.*.local\r\n/config/secrets/prod/prod.decrypt.private.php\r\n/public/bundles/\r\n/var/\r\n/vendor/\r\n###< symfony/framework-bundle ###\r\n\r\n###> phpunit/phpunit ###\r\n/phpunit.xml\r\n.phpunit.result.cache\r\n###< phpunit/phpunit ###\r\n\r\n###> symfony/phpunit-bridge ###\r\n.phpunit.result.cache\r\n/phpunit.xml\r\n###< symfony/phpunit-bridge ###\r\n\r\n###> symfony/asset-mapper ###\r\n/public/assets/\r\n/assets/vendor/\r\n###< symfony/asset-mapper ###\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	(revision a82224cf9ea77fd202a8e39d17b0b8b33b17606f)
++++ b/.gitignore	(date 1748520538674)
+@@ -1,5 +1,6 @@
+ 
+ ###> symfony/framework-bundle ###
++/.env
+ /.env.local
+ /.env.local.php
+ /.env.*.local
