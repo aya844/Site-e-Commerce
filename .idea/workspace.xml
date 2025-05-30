@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="&quot;gestion de stock des produits (epuisement et ajout)&quot;">
-      <change afterPath="$PROJECT_DIR$/templates/produits/ajoutstockHistoriqueShow.html.twig" afterDir="false" />
+    <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="&quot;Historique de stock des produits/separation de modification de stock d'un produit de sa mofidication&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_shop_dev.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProduitsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProduitsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/produits/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produits/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/produits/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produits/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataBase/my_shop_dev (1).sql" beforeDir="false" afterPath="$PROJECT_DIR$/DataBase/my_shop_dev (1).sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +225,7 @@
       <workItem from="1748509244182" duration="62000" />
       <workItem from="1748510129381" duration="1390000" />
       <workItem from="1748512787024" duration="15990000" />
-      <workItem from="1748548516797" duration="32079000" />
+      <workItem from="1748548516797" duration="33211000" />
     </task>
     <task id="LOCAL-00001" summary="afficher supprimer les utilisateurs et modifier leur role">
       <option name="closed" value="true" />
@@ -271,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748603624496</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="&quot;Historique de stock des produits/separation de modification de stock d'un produit de sa mofidication&quot;">
+      <option name="closed" value="true" />
+      <created>1748609987030</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748609987030</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,7 +298,8 @@
     <MESSAGE value="&quot;Ajout des images des produits&quot;" />
     <MESSAGE value="&quot;gestion de stock des produits&quot;" />
     <MESSAGE value="&quot;gestion de stock des produits (epuisement et ajout)&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;gestion de stock des produits (epuisement et ajout)&quot;" />
+    <MESSAGE value="&quot;Historique de stock des produits/separation de modification de stock d'un produit de sa mofidication&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Historique de stock des produits/separation de modification de stock d'un produit de sa mofidication&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
