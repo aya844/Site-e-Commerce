@@ -18,3 +18,9 @@ body {
     width: 100%;
     height: 100Vh;
 }
+
+h1,h2{
+    margin-top: 30px ;
+    margin-bottom: 30px;
+
+}

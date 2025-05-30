@@ -36,6 +36,7 @@ class Produits
     {
         $this->sousCategories = new ArrayCollection();
         $this->ajouterhistoriqueproduits = new ArrayCollection();
+        $this->qte = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,6 +90,12 @@ class Produits
      */
     #[ORM\OneToMany(targetEntity: Ajouterhistoriqueproduit::class, mappedBy: 'produit')]
     private Collection $ajouterhistoriqueproduits;
+
+    /**
+     * @var Collection<int, Ajouterhistoriqueproduit>
+     */
+    #[ORM\OneToMany(targetEntity: Ajouterhistoriqueproduit::class, mappedBy: 'produit')]
+    private Collection $qte;
 
 
     public function getImage(): ?string
@@ -163,6 +170,36 @@ class Produits
             // set the owning side to null (unless already changed)
             if ($ajouterhistoriqueproduit->getProduit() === $this) {
                 $ajouterhistoriqueproduit->setProduit(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Ajouterhistoriqueproduit>
+     */
+    public function getQte(): Collection
+    {
+        return $this->qte;
+    }
+
+    public function addQte(Ajouterhistoriqueproduit $qte): static
+    {
+        if (!$this->qte->contains($qte)) {
+            $this->qte->add($qte);
+            $qte->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQte(Ajouterhistoriqueproduit $qte): static
+    {
+        if ($this->qte->removeElement($qte)) {
+            // set the owning side to null (unless already changed)
+            if ($qte->getProduit() === $this) {
+                $qte->setProduit(null);
             }
         }
 

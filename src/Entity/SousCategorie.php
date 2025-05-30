@@ -25,16 +25,13 @@ class SousCategorie
     /**
      * @var Collection<int, Produits>
      */
-    #[ORM\ManyToMany(targetEntity: Produits::class, mappedBy: 'sousCatégories')]
+    #[ORM\ManyToMany(targetEntity: Produits::class, mappedBy: 'sousCategories')]
     private Collection $produits;
 
     public function __construct()
     {
         $this->produits = new ArrayCollection();
     }
-
-
-
 
     public function getId(): ?int
     {
@@ -77,6 +74,7 @@ class SousCategorie
     {
         if (!$this->produits->contains($produit)) {
             $this->produits->add($produit);
+            // IMPORTANT: call addSousCatGory (exact method name from Produits)
             $produit->addSousCatGory($this);
         }
 
@@ -86,6 +84,7 @@ class SousCategorie
     public function removeProduit(Produits $produit): static
     {
         if ($this->produits->removeElement($produit)) {
+            // IMPORTANT: call removeSousCatGory (exact method name from Produits)
             $produit->removeSousCatGory($this);
         }
 
