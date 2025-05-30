@@ -4,25 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="&quot;Ajouter, modifier, supprimer catégories&quot;">
-      <change afterPath="$PROJECT_DIR$/templates/home/filter.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/show.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/layout/pagination_template/html.twig" afterDir="false" />
+    <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="affiche des messages flash pour l'ajout et la modification et supression des categories puis le droit d'acces pour modifier et l'ajout et supression de categories (ADMIN only)">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Site-e-Commerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Site-e-Commerce.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Produits.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/SousCategorie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/SousCategorie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/nav.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +24,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="$PROJECT_DIR$/../../../xampp/php/php.exe">
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "MohamedYassineTurki"
+  }
+}]]></component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
