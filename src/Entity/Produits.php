@@ -16,7 +16,7 @@ class Produits
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -31,9 +31,11 @@ class Produits
     #[ORM\ManyToMany(targetEntity: SousCategorie::class, inversedBy: 'produits')]
     private Collection $sousCategories;
 
+
     public function __construct()
     {
         $this->sousCategories = new ArrayCollection();
+        $this->ajouterhistoriqueproduits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,6 +78,42 @@ class Produits
 
         return $this;
     }
+    #[ORM\Column(type: 'string',length: 255, nullable: true)]
+    private ?string $image = null;
+
+    #[ORM\Column(type: 'integer',nullable: false)]
+    private int $stock = 0;
+
+    /**
+     * @var Collection<int, Ajouterhistoriqueproduit>
+     */
+    #[ORM\OneToMany(targetEntity: Ajouterhistoriqueproduit::class, mappedBy: 'produit')]
+    private Collection $ajouterhistoriqueproduits;
+
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getStock(): ?int
+    {
+        return $this->stock;
+    }
+
+    public function setStock(int $stock): static
+    {
+        $this->stock = $stock;
+
+        return $this;
+    }
 
     /**
      * @return Collection<int, SousCategorie>
@@ -100,4 +138,35 @@ class Produits
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Ajouterhistoriqueproduit>
+     */
+    public function getAjouterhistoriqueproduits(): Collection
+    {
+        return $this->ajouterhistoriqueproduits;
+    }
+
+    public function addAjouterhistoriqueproduit(Ajouterhistoriqueproduit $ajouterhistoriqueproduit): static
+    {
+        if (!$this->ajouterhistoriqueproduits->contains($ajouterhistoriqueproduit)) {
+            $this->ajouterhistoriqueproduits->add($ajouterhistoriqueproduit);
+            $ajouterhistoriqueproduit->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAjouterhistoriqueproduit(Ajouterhistoriqueproduit $ajouterhistoriqueproduit): static
+    {
+        if ($this->ajouterhistoriqueproduits->removeElement($ajouterhistoriqueproduit)) {
+            // set the owning side to null (unless already changed)
+            if ($ajouterhistoriqueproduit->getProduit() === $this) {
+                $ajouterhistoriqueproduit->setProduit(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

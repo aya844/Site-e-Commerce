@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Ajouterhistoriqueproduit;
 use App\Entity\Produits;
+use App\Form\AjouterhistoriqueproduitForm;
 use App\Form\ProduitsForm;
 use App\Repository\ProduitsRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,12 +44,19 @@ final class ProduitsController extends AbstractController
                         $this->getParameter('image_dir'),
                         $newFileName
                     );
-                } catch (FileException $exception) {
-                    $product->setImage($newFileName);
-                  }
-
+                } catch (FileException $exception) {$this->addFlash('danger', 'Erreur lors de l\'upload de l\'image.');
+                    return $this->redirectToRoute('app_produits_new');}
+                $produit->setImage($newFileName);
             }
+
             $entityManager->persist($produit);
+            $entityManager->flush();
+
+            $stockHistorique= new Ajouterhistoriqueproduit();
+            $stockHistorique->setQuantite($produit->getStock());
+            $stockHistorique->setProduit($produit);
+            $stockHistorique->setcreatedat(new \DateTimeImmutable());
+            $entityManager->persist($stockHistorique);
             $entityManager->flush();
 
             $this->addFlash('success','votre produit a été ajouté avec succes');
@@ -89,7 +98,7 @@ final class ProduitsController extends AbstractController
     #[Route('/{id}', name: 'app_produits_delete', methods: ['POST'])]
     public function delete(Request $request, Produits $produit, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
             $entityManager->remove($produit);
             $entityManager->flush();
             $this->addFlash('danger', 'votre produit a été supprimé');
@@ -97,4 +106,41 @@ final class ProduitsController extends AbstractController
 
         return $this->redirectToRoute('app_produits_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/add/product/{id}/stock', name: 'app_produits_stock_add', methods: ['POST','GET'])]
+    public function addStock($id, EntityManagerInterface $entityManager,Request $request , ProduitsRepository $ProduitsRepository): Response
+    {
+        $addstock= new Ajouterhistoriqueproduit();
+        $form= $this->createForm(AjouterhistoriqueproduitForm::class,$addstock);
+        $form->handleRequest($request);
+        $produit= $ProduitsRepository->find($id);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($addstock->getQuantite() > 0) {
+                $addstock->setProduit($produit);
+                $newquantite = $produit->getStock()+$addstock->getQuantite();
+                $produit->setStock($newquantite);
+                $addstock->setcreatedat(new \DateTimeImmutable());
+
+
+                $entityManager->persist($addstock);
+                $entityManager->persist($produit);
+                $entityManager->flush();
+
+                $this->addFlash('success', 'Le stock a été mis à jour avec succès.');
+                return $this->redirectToRoute('app_produits_index', ['id'=>$id] );
+           } else {
+                $this->addFlash('danger', 'Le stock ne  doit pas être inférieur à 0.');
+                return $this->redirectToRoute('app_produits_stock_add', ['id' =>$produit->getId()]);
+            }
+        }
+
+
+
+        return $this->render('produits/addstock.html.twig', [
+            'form' => $form->createView(),
+            'produit' => $produit,]
+        );
+
+}
 }

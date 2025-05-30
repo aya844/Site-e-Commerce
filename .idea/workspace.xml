@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="&quot;Ajout des images des produits&quot;">
+    <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="&quot;gestion de stock des produits&quot;">
+      <change afterPath="$PROJECT_DIR$/templates/produits/addstock.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataBase/my_shop_dev (1).sql" beforeDir="false" afterPath="$PROJECT_DIR$/DataBase/my_shop_dev (1).sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_shop_dev.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ProduitsForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProduitsForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/produits/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produits/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProduitsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProduitsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Produits.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/produits/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produits/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +38,7 @@
     "accountId": "ef0d2f75-3848-44ab-8419-e2fd5d55a39e"
   }
 }]]></component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xamp\php\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
@@ -172,7 +175,7 @@
     </include_path>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -227,7 +230,7 @@
       <workItem from="1748509244182" duration="62000" />
       <workItem from="1748510129381" duration="1390000" />
       <workItem from="1748512787024" duration="15990000" />
-      <workItem from="1748548516797" duration="11383000" />
+      <workItem from="1748548516797" duration="26136000" />
     </task>
     <task id="LOCAL-00001" summary="afficher supprimer les utilisateurs et modifier leur role">
       <option name="closed" value="true" />
@@ -253,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748555368940</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="&quot;gestion de stock des produits&quot;">
+      <option name="closed" value="true" />
+      <created>1748567246952</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748567246952</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,23 +285,8 @@
     <MESSAGE value="afficher supprimer les utilisateurs et modifier leur role" />
     <MESSAGE value="&quot;Ajouter, modifier, supprimer catégories&quot;" />
     <MESSAGE value="&quot;Ajout des images des produits&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Ajout des images des produits&quot;" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/Controller/ProduitsController.php</url>
-          <line>54</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/Controller/ProduitsController.php</url>
-          <line>88</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="&quot;gestion de stock des produits&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;gestion de stock des produits&quot;" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
