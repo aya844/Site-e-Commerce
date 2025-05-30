@@ -23,11 +23,11 @@
                 <tr>
                     <td>{{ produit.id }}</td>
                     <td>{{ produit.nom }}</td>
-                    <td>{{ produit.description }}</td>
+                    <td>{{ produit.description|slice(0,100)}}...</td>
                     <td>{{ produit.prix }}</td>
                     <td>
-                        <a class="btn btn-outline-primary" href="{{ path('app_produits_show', {'id': produit.id}) }}">voir</a>
-                        <a class="btn btn-outline-primary" href="{{ path('app_produits_edit', {'id': produit.id}) }}">modifier</a>
+                        <a class="btn btn-primary" href="{{ path('app_produits_show', {'id': produit.id}) }}">voir</a>
+                        <a class="btn btn-outline-success" href="{{ path('app_produits_edit', {'id': produit.id}) }}">modifier</a>
                     </td>
                 </tr>
             {% else %}
@@ -38,7 +38,7 @@
             </tbody>
         </table>
 
-        <a class="btn btn-outline-primary" href="{{ path('app_produits_new') }}">Ajouter un nouveau produit</a>
+        <a class="btn btn-success" href="{{ path('app_produits_new') }}">Ajouter un nouveau produit</a>
     </div>
 
 {% endblock %}

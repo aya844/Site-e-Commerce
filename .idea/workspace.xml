@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="&quot;Ajouter, modifier, supprimer catégories&quot;">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Site-e-Commerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Site-e-Commerce.iml" afterDir="false" />
+    <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="&quot;Ajout des images des produits&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBase/my_shop_dev (1).sql" beforeDir="false" afterPath="$PROJECT_DIR$/DataBase/my_shop_dev (1).sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_shop_dev.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProduitsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProduitsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/ProduitsForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProduitsForm.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/produits/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produits/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/produits/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produits/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +24,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "meryem811"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/aya844/Site-e-Commerce.git",
+    "accountId": "ef0d2f75-3848-44ab-8419-e2fd5d55a39e"
+  }
+}]]></component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xamp\php\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
@@ -163,6 +171,9 @@
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
     </include_path>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -216,7 +227,7 @@
       <workItem from="1748509244182" duration="62000" />
       <workItem from="1748510129381" duration="1390000" />
       <workItem from="1748512787024" duration="15990000" />
-      <workItem from="1748548516797" duration="6364000" />
+      <workItem from="1748548516797" duration="11383000" />
     </task>
     <task id="LOCAL-00001" summary="afficher supprimer les utilisateurs et modifier leur role">
       <option name="closed" value="true" />
@@ -226,7 +237,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748529815988</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="&quot;Ajout des images des produits&quot;">
+      <option name="closed" value="true" />
+      <created>1748555008541</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1748555008541</updated>
+    </task>
+    <task id="LOCAL-00003" summary="&quot;Ajout des images des produits&quot;">
+      <option name="closed" value="true" />
+      <created>1748555368940</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1748555368940</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,19 +273,20 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="afficher supprimer les utilisateurs et modifier leur role" />
     <MESSAGE value="&quot;Ajouter, modifier, supprimer catégories&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Ajouter, modifier, supprimer catégories&quot;" />
+    <MESSAGE value="&quot;Ajout des images des produits&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Ajout des images des produits&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Controller/ProduitsController.php</url>
-          <line>43</line>
+          <line>54</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Controller/ProduitsController.php</url>
-          <line>77</line>
+          <line>88</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

@@ -18,6 +18,7 @@ class ProduitsForm extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('prix')
+            ->add("stock")
             ->add("image",FileType::class,[
                 'label' => 'Image du produit',
                 'mapped' => false,

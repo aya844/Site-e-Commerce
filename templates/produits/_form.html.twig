@@ -1,9 +1,14 @@
 {{ form_start(form) }}
+
+
+
     {{ form_row(form.nom, {'attr': {'class': 'form form-control'}}) }}
     {{ form_row(form.description, {'attr': {'class': 'form form-control'}}) }}
     {{ form_row(form.prix, {'attr': {'class': 'form form-control'}}) }}
+    {{ form_row(form.stock, {'attr': {'class': 'form form-control'}}) }}
     {{ form_row(form.sousCategories, {'attr': {'class': 'form form-control'}}) }}<br>
     {{ form_row(form.image, {'attr': {'class': 'form '}}) }} <br>
     <button class="btn btn-outline-primary btn-block">{{ button_label|default('Sauvegarder') }}</button>
     <br>
 {{ form_end(form) }}
+
