@@ -6,6 +6,7 @@ use App\Entity\Ajouterhistoriqueproduit;
 use App\Entity\Produits;
 use App\Form\AjouterhistoriqueproduitForm;
 use App\Form\ProduitsForm;
+use App\Repository\AjouterhistoriqueproduitRepository;
 use App\Repository\ProduitsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use App\Form\ProduitsFormUpdate;
 
 #[Route('/editor/produits')]
 final class ProduitsController extends AbstractController
@@ -78,9 +80,9 @@ final class ProduitsController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_produits_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Produits $produit, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Produits $produit, EntityManagerInterface $entityManager,SluggerInterface $slugger): Response
     {
-        $form = $this->createForm(ProduitsForm::class, $produit);
+        $form = $this->createForm(ProduitsFormUpdate::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -141,6 +143,16 @@ final class ProduitsController extends AbstractController
             'form' => $form->createView(),
             'produit' => $produit,]
         );
+    }
+    #[Route('/add/product/{id}/stock/historique', name: 'app_produits_stock_add_historique', methods: ['GET'])]
+    public function addStockHistorique($id, ProduitsRepository $ProduitsRepository,AjouterhistoriqueproduitRepository $ajouterhistoriqueproduitRepository): Response
+    {
+        $produit = $ProduitsRepository->find($id);
+        $ajoutstockhistorique = $ajouterhistoriqueproduitRepository->findBy(['produit' => $produit], ['id' => 'DESC']);
 
-}
+        return $this->render('produits/ajoutstockHistoriqueShow.html.twig', [
+            "historique" => $ajoutstockhistorique,
+
+        ]);
+    }
 }

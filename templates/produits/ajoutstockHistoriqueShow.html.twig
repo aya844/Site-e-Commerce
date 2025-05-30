@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+
+        <table class="table">
+            <br>
+            <h1>historique de stock du produit</h1>
+            <br>
+
+            {% include 'layout/_flash_message.html.twig' %}
+            <tr>
+                <th>id</th>
+                <th>Quantité ajoutée</th>
+                <th>date d'ajout</th>
+            </tr>
+
+            {% for produit in historique %}
+                <tr>
+                    <td>{{ produit.id }}</td>
+                    <td>{{ produit.quantite }}</td>
+                    <td>{{ produit.createdAt |date('d-m-y H:i:s')}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <div class="text-center mt-3">
+            <a class="btn btn-primary" href="{{ path('app_produits_index') }}">Retour à la liste des produits</a>
+        </div>
+
+    </div>
+{% endblock %}

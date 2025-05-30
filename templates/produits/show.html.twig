@@ -3,6 +3,11 @@
 {% block title %}Produits{% endblock %}
 
 {% block body %}
+    <div class="container"> <br><br>
+        <br>
+        <h1>Détails du produit</h1>
+        <br>
+        {% include 'layout/_flash_message.html.twig' %}
     <div class="container">
         <br>
         <h1>Produits</h1>
@@ -31,8 +36,9 @@
         <a class="btn btn-outline-primary" href="{{ path('app_produits_index') }}">Retour à la liste</a>
 
         <a class="btn btn-outline-primary" href="{{ path('app_produits_edit', {'id': produit.id}) }}">Modifier</a>
-
+        <a class="btn btn-outline-secondary" href="{{ path('app_produits_stock_add_historique', {'id': produit.id}) }}">Afficher l'historique du stock</a>
         {{ include('produits/_delete_form.html.twig') }}
+    </div>
     </div>
 
 {% endblock %}
