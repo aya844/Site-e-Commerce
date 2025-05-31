@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="updtaed database" />
+    <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="&quot;Ajouter, modifier, supprimer catégories&quot;">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/produits/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produits/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/produits/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produits/edit.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,13 +26,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "MohamedYassineTurki"
-  }
-}]]></component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="$PROJECT_DIR$/../../../xampp/php/php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
@@ -224,39 +226,7 @@
       <option name="project" value="LOCAL" />
       <updated>1748529815988</updated>
     </task>
-    <task id="LOCAL-00002" summary="afficher et ajouter un produit au panier">
-      <option name="closed" value="true" />
-      <created>1748648834863</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1748648834863</updated>
-    </task>
-    <task id="LOCAL-00003" summary="afficher et supprimer le panier">
-      <option name="closed" value="true" />
-      <created>1748652074309</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1748652074309</updated>
-    </task>
-    <task id="LOCAL-00004" summary="frais de port et tarrifs de livraison">
-      <option name="closed" value="true" />
-      <created>1748653612929</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1748653612929</updated>
-    </task>
-    <task id="LOCAL-00005" summary="updtaed database">
-      <option name="closed" value="true" />
-      <created>1748653805761</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1748653805761</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,11 +246,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="afficher supprimer les utilisateurs et modifier leur role" />
     <MESSAGE value="&quot;Ajouter, modifier, supprimer catégories&quot;" />
-    <MESSAGE value="afficher et ajouter un produit au panier" />
-    <MESSAGE value="afficher et supprimer le panier" />
-    <MESSAGE value="frais de port et tarrifs de livraison" />
-    <MESSAGE value="updtaed database" />
-    <option name="LAST_COMMIT_MESSAGE" value="updtaed database" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Ajouter, modifier, supprimer catégories&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
