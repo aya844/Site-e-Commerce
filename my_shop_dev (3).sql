@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 31, 2025 at 11:10 AM
--- Server version: 8.0.41
--- PHP Version: 8.2.12
+-- Hôte : 127.0.0.1
+-- Généré le : sam. 31 mai 2025 à 17:09
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,24 +18,24 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `my_shop_dev`
+-- Base de données : `my_shop_dev`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ajouterhistoriqueproduit`
+-- Structure de la table `ajouterhistoriqueproduit`
 --
 
 CREATE TABLE `ajouterhistoriqueproduit` (
-  `id` int NOT NULL,
-  `produit_id` int NOT NULL,
-  `quantite` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `produit_id` int(11) NOT NULL,
+  `quantite` int(11) NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `ajouterhistoriqueproduit`
+-- Déchargement des données de la table `ajouterhistoriqueproduit`
 --
 
 INSERT INTO `ajouterhistoriqueproduit` (`id`, `produit_id`, `quantite`, `created_at`) VALUES
@@ -67,16 +67,16 @@ INSERT INTO `ajouterhistoriqueproduit` (`id`, `produit_id`, `quantite`, `created
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorie`
+-- Structure de la table `categorie`
 --
 
 CREATE TABLE `categorie` (
-  `id` int NOT NULL,
-  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `categorie`
+-- Déchargement des données de la table `categorie`
 --
 
 INSERT INTO `categorie` (`id`, `nom`) VALUES
@@ -87,29 +87,46 @@ INSERT INTO `categorie` (`id`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `city`
+-- Structure de la table `city`
 --
 
 CREATE TABLE `city` (
-  `id` int NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `shipping_cost` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `city`
+--
+
+INSERT INTO `city` (`id`, `name`, `shipping_cost`) VALUES
+(1, 'Tunis', 4),
+(2, 'Mahdia', 7),
+(3, 'Jerba', 10),
+(4, 'Monastir', 6),
+(5, 'Sousse', 6),
+(6, 'Kef', 8),
+(7, 'Bizerte', 4),
+(8, 'Siliana', 7),
+(9, 'kairaouan', 8),
+(10, 'Tozeur', 10),
+(11, 'Gabes', 9);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doctrine_migration_versions`
+-- Structure de la table `doctrine_migration_versions`
 --
 
 CREATE TABLE `doctrine_migration_versions` (
-  `version` varchar(191) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `version` varchar(191) NOT NULL,
   `executed_at` datetime DEFAULT NULL,
-  `execution_time` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+  `execution_time` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `doctrine_migration_versions`
+-- Déchargement des données de la table `doctrine_migration_versions`
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
@@ -122,19 +139,22 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20250529185326', '2025-05-29 22:36:55', 36),
 ('DoctrineMigrations\\Version20250529203642', '2025-05-30 10:42:59', 8),
 ('DoctrineMigrations\\Version20250529220529', '2025-05-30 10:42:59', 11),
-('DoctrineMigrations\\Version20250531004601', '2025-05-31 00:46:44', 316);
+('DoctrineMigrations\\Version20250531004601', '2025-05-31 00:46:44', 316),
+('DoctrineMigrations\\Version20250531091113', '2025-05-31 12:10:08', 51),
+('DoctrineMigrations\\Version20250531120405', '2025-05-31 14:04:31', 39),
+('DoctrineMigrations\\Version20250531122403', '2025-05-31 14:24:28', 289);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `messenger_messages`
+-- Structure de la table `messenger_messages`
 --
 
 CREATE TABLE `messenger_messages` (
-  `id` bigint NOT NULL,
-  `body` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `headers` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue_name` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) NOT NULL,
+  `body` longtext NOT NULL,
+  `headers` longtext NOT NULL,
+  `queue_name` varchar(190) NOT NULL,
   `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `available_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `delivered_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)'
@@ -143,20 +163,45 @@ CREATE TABLE `messenger_messages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produits`
+-- Structure de la table `order`
 --
 
-CREATE TABLE `produits` (
-  `id` int NOT NULL,
-  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci,
-  `prix` int NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `stock` int NOT NULL
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL,
+  `ville_id` int(11) DEFAULT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `telephone` varchar(255) NOT NULL,
+  `addresse` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  `pay_on_delivery` tinyint(1) NOT NULL,
+  `prix_total` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `produits`
+-- Déchargement des données de la table `order`
+--
+
+INSERT INTO `order` (`id`, `ville_id`, `first_name`, `last_name`, `telephone`, `addresse`, `created_at`, `pay_on_delivery`, `prix_total`) VALUES
+(13, 2, 'aya', 'br', '22222', 'rue xyz', '2025-05-31 16:55:01', 1, 17);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produits`
+--
+
+CREATE TABLE `produits` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `description` longtext DEFAULT NULL,
+  `prix` int(11) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `stock` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `produits`
 --
 
 INSERT INTO `produits` (`id`, `nom`, `description`, `prix`, `image`, `stock`) VALUES
@@ -181,16 +226,36 @@ INSERT INTO `produits` (`id`, `nom`, `description`, `prix`, `image`, `stock`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produits_sous_categorie`
+-- Structure de la table `produits_commande`
 --
 
-CREATE TABLE `produits_sous_categorie` (
-  `produits_id` int NOT NULL,
-  `sous_categorie_id` int NOT NULL
+CREATE TABLE `produits_commande` (
+  `id` int(11) NOT NULL,
+  `commande_id` int(11) NOT NULL,
+  `produit_id` int(11) NOT NULL,
+  `quantite` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `produits_sous_categorie`
+-- Déchargement des données de la table `produits_commande`
+--
+
+INSERT INTO `produits_commande` (`id`, `commande_id`, `produit_id`, `quantite`) VALUES
+(9, 13, 20, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produits_sous_categorie`
+--
+
+CREATE TABLE `produits_sous_categorie` (
+  `produits_id` int(11) NOT NULL,
+  `sous_categorie_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `produits_sous_categorie`
 --
 
 INSERT INTO `produits_sous_categorie` (`produits_id`, `sous_categorie_id`) VALUES
@@ -215,17 +280,17 @@ INSERT INTO `produits_sous_categorie` (`produits_id`, `sous_categorie_id`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sous_categorie`
+-- Structure de la table `sous_categorie`
 --
 
 CREATE TABLE `sous_categorie` (
-  `id` int NOT NULL,
-  `categorie_id` int NOT NULL,
-  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `categorie_id` int(11) NOT NULL,
+  `nom` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `sous_categorie`
+-- Déchargement des données de la table `sous_categorie`
 --
 
 INSERT INTO `sous_categorie` (`id`, `categorie_id`, `nom`) VALUES
@@ -239,59 +304,60 @@ INSERT INTO `sous_categorie` (`id`, `categorie_id`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Structure de la table `user`
 --
 
 CREATE TABLE `user` (
-  `id` int NOT NULL,
-  `email` varchar(180) COLLATE utf8mb4_general_ci NOT NULL,
-  `roles` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '(DC2Type:json)',
-  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `first_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `last_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
-) ;
+  `id` int(11) NOT NULL,
+  `email` varchar(180) NOT NULL,
+  `roles` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '(DC2Type:json)' CHECK (json_valid(`roles`)),
+  `password` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`, `first_name`, `last_name`) VALUES
 (4, 'aya@gmail.com', '[\"ROLE_ADMIN\", \"ROLE_EDITOR\", \"ROLE_USER\"]', '$2y$13$Y6JdmFylIBsxJeTWoc5HLe/nBfbYE81xZlUZGoia38OICWp82M00W', 'aya', 'aya'),
 (5, 'meriemkaroui55@gmail.com', '[\"ROLE_ADMIN\", \"ROLE_EDITOR\", \"ROLE_USER\"]', '$2y$13$x4n7Bx09KFV8Q7SB1SRvee6NaXk4T7HGu2cbj8QtTotwebJ1ocIZC', 'mery', 'karoui'),
 (6, 'yosr@gmail.com', '[\"ROLE_ADMIN\", \"ROLE_EDITOR\", \"ROLE_USER\"]', '$2y$13$MnPQncbNbdfhYnhl6BZJSe.GNzP.ZdFMrVOn7FXXBbplyO/a0AUwq', 'yosr', 'Bouslahi'),
-(7, 'yassine@gmail.com', '[\"ROLE_ADMIN\", \"ROLE_EDITOR\", \"ROLE_USER\"]', '$2y$13$7fMiZogoGXMKr.zWKBbm/OPR4v8UAhFnV.5UmlipXhrjKFQ0hK7Aq', 'turki', 'yassine');
+(7, 'yassine@gmail.com', '[\"ROLE_ADMIN\", \"ROLE_EDITOR\", \"ROLE_USER\"]', '$2y$13$7fMiZogoGXMKr.zWKBbm/OPR4v8UAhFnV.5UmlipXhrjKFQ0hK7Aq', 'turki', 'yassine'),
+(8, 'eya@gmail.com', '[]', '$2y$13$8oWNzLe6Ouui8AjKDR2teup/zUYDlRbjYKXFdbfpiccr6INJb2bK.', 'eya2', 'eya');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `ajouterhistoriqueproduit`
+-- Index pour la table `ajouterhistoriqueproduit`
 --
 ALTER TABLE `ajouterhistoriqueproduit`
   ADD PRIMARY KEY (`id`),
   ADD KEY `IDX_E3E57862F347EFB` (`produit_id`);
 
 --
--- Indexes for table `categorie`
+-- Index pour la table `categorie`
 --
 ALTER TABLE `categorie`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `city`
+-- Index pour la table `city`
 --
 ALTER TABLE `city`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `doctrine_migration_versions`
+-- Index pour la table `doctrine_migration_versions`
 --
 ALTER TABLE `doctrine_migration_versions`
   ADD PRIMARY KEY (`version`);
 
 --
--- Indexes for table `messenger_messages`
+-- Index pour la table `messenger_messages`
 --
 ALTER TABLE `messenger_messages`
   ADD PRIMARY KEY (`id`),
@@ -300,14 +366,29 @@ ALTER TABLE `messenger_messages`
   ADD KEY `IDX_75EA56E016BA31DB` (`delivered_at`);
 
 --
--- Indexes for table `produits`
+-- Index pour la table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_F5299398A73F0036` (`ville_id`);
+
+--
+-- Index pour la table `produits`
 --
 ALTER TABLE `produits`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `UNIQ_BE2DDF8C6C6E55B5` (`nom`);
 
 --
--- Indexes for table `produits_sous_categorie`
+-- Index pour la table `produits_commande`
+--
+ALTER TABLE `produits_commande`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_91DC5EAF82EA2E54` (`commande_id`),
+  ADD KEY `IDX_91DC5EAFF347EFB` (`produit_id`);
+
+--
+-- Index pour la table `produits_sous_categorie`
 --
 ALTER TABLE `produits_sous_categorie`
   ADD PRIMARY KEY (`produits_id`,`sous_categorie_id`),
@@ -315,84 +396,109 @@ ALTER TABLE `produits_sous_categorie`
   ADD KEY `IDX_1E1E0853365BF48` (`sous_categorie_id`);
 
 --
--- Indexes for table `sous_categorie`
+-- Index pour la table `sous_categorie`
 --
 ALTER TABLE `sous_categorie`
   ADD PRIMARY KEY (`id`),
   ADD KEY `IDX_52743D7BBCF5E72D` (`categorie_id`);
 
 --
--- Indexes for table `user`
+-- Index pour la table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `UNIQ_IDENTIFIER_EMAIL` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `ajouterhistoriqueproduit`
+-- AUTO_INCREMENT pour la table `ajouterhistoriqueproduit`
 --
 ALTER TABLE `ajouterhistoriqueproduit`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `categorie`
+-- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `city`
+-- AUTO_INCREMENT pour la table `city`
 --
 ALTER TABLE `city`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `messenger_messages`
+-- AUTO_INCREMENT pour la table `messenger_messages`
 --
 ALTER TABLE `messenger_messages`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `produits`
+-- AUTO_INCREMENT pour la table `order`
+--
+ALTER TABLE `order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `sous_categorie`
+-- AUTO_INCREMENT pour la table `produits_commande`
+--
+ALTER TABLE `produits_commande`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT pour la table `sous_categorie`
 --
 ALTER TABLE `sous_categorie`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `ajouterhistoriqueproduit`
+-- Contraintes pour la table `ajouterhistoriqueproduit`
 --
 ALTER TABLE `ajouterhistoriqueproduit`
   ADD CONSTRAINT `FK_E3E57862F347EFB` FOREIGN KEY (`produit_id`) REFERENCES `produits` (`id`);
 
 --
--- Constraints for table `produits_sous_categorie`
+-- Contraintes pour la table `order`
+--
+ALTER TABLE `order`
+  ADD CONSTRAINT `FK_F5299398A73F0036` FOREIGN KEY (`ville_id`) REFERENCES `city` (`id`);
+
+--
+-- Contraintes pour la table `produits_commande`
+--
+ALTER TABLE `produits_commande`
+  ADD CONSTRAINT `FK_91DC5EAF82EA2E54` FOREIGN KEY (`commande_id`) REFERENCES `order` (`id`),
+  ADD CONSTRAINT `FK_91DC5EAFF347EFB` FOREIGN KEY (`produit_id`) REFERENCES `produits` (`id`);
+
+--
+-- Contraintes pour la table `produits_sous_categorie`
 --
 ALTER TABLE `produits_sous_categorie`
   ADD CONSTRAINT `FK_1E1E0853365BF48` FOREIGN KEY (`sous_categorie_id`) REFERENCES `sous_categorie` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_1E1E0853CD11A2CF` FOREIGN KEY (`produits_id`) REFERENCES `produits` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `sous_categorie`
+-- Contraintes pour la table `sous_categorie`
 --
 ALTER TABLE `sous_categorie`
   ADD CONSTRAINT `FK_52743D7BBCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`);
