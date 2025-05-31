@@ -3,18 +3,27 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container">
+    <h1>Produits</h1>
+    <div class="row">
+    {% for produit in produits %}
+        <div class="col-md-3">
+         <div class="card" style="width: 18rem;">
+            <img src="{{ asset('uploads/images/'~produit.image) }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a style="text-decoration: none; color: darkgreen" href="{{ path('app_home_produits_show', {'id': produit.id}) }}">
+                    <h5 class="card-title">{{ produit.nom }}</h5>
+                </a>
+                <p class="card-text">{{ produit.description|slice(0,60) }} ..</p>
+                <h3>{{ produit.prix }} EUR</h3>
+                <a href="{{ path('app_cart_new', {'id': produit.id}) }}" class="btn btn-outline-success">Ajouter au panier</a>
+            </div>
+        </div>
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/USER/Desktop/Projet_symfony/projetWeb/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>C:/Users/USER/Desktop/Projet_symfony/projetWeb/templates/home/index.html.twig</code></li>
-    </ul>
+    {% endfor%}
+    </div>
+    <br><br><br>
+    {{ knp_pagination_render(produits,'layout/pagination_template/html.twig') }}
 </div>
 {% endblock %}
