@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="&quot;Ajouter, modifier, supprimer catégories&quot;">
+    <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="prix en DT">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/filter.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/filter.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/nav.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +214,7 @@
       <workItem from="1748510129381" duration="1390000" />
       <workItem from="1748512787024" duration="15990000" />
       <workItem from="1748548516797" duration="6364000" />
-      <workItem from="1748683248494" duration="324000" />
+      <workItem from="1748683248494" duration="1713000" />
     </task>
     <task id="LOCAL-00001" summary="afficher supprimer les utilisateurs et modifier leur role">
       <option name="closed" value="true" />
@@ -224,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748529815988</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="prix en DT">
+      <option name="closed" value="true" />
+      <created>1748683636440</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1748683636443</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +252,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="afficher supprimer les utilisateurs et modifier leur role" />
     <MESSAGE value="&quot;Ajouter, modifier, supprimer catégories&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Ajouter, modifier, supprimer catégories&quot;" />
+    <MESSAGE value="prix en DT" />
+    <option name="LAST_COMMIT_MESSAGE" value="prix en DT" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
