@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Order;
+use App\Entity\City;
 use App\Form\TypeDeCommandeForm;
 use App\Repository\ProduitsRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,5 +38,11 @@ final class OrderController extends AbstractController
             'form'=>$form->createView(),
             'total'=>$total,
         ]);
+    }
+    #[Route('/city/{id}/shipping/cost', name: 'app_city_shipping_cost')]
+    public function cityShippingCost(City $ville): Response
+    {
+        $cityShippingPrice = $ville->getShippingCost();
+        return new Response(json_encode(['status'=>200, "message"=>'on', 'content'=>$cityShippingPrice]));
     }
 }

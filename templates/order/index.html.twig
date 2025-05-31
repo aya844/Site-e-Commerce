@@ -18,9 +18,53 @@
             <br><br>
             <br><br>
             <span> Montant à payer: </span>
-            <h4>{{ total }} DT</h4>
+            <h2><span id="card-price">{{ total }}</span> DT</h2>
             <span>Frais de Livraison: </span>
+            <h2><span id="shippingCost"></span> DT</h2>
+            <span>Montant Total à payer : </span>
+            <h2><span class="total-price"></span> DT</h2>
         </div>
     </div>
 </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>>
+    <script>
+        $(document).ready(function (){
+            const villeSelector = $('#type_de_commande_form_ville');
+            const valeurVille = villeSelector.val();
+            const url = `http://127.0.0.1:8000/city/${valeurVille}/shipping/cost`;
+            //console.log(url)
+
+            function ajaxRequest (url){
+                $.ajax({
+                    url: url,
+                    type:'GET',
+                    success: function(response){
+                        const newResponse = JSON.parse(response)
+                        if(parseInt(newResponse.status) === 200){
+                            console.log(newResponse.status)
+                            $('#shippingCost').text(newResponse.content)
+
+                            const cardPrice = parseInt($("#card-price").text());
+                            const shippingCost = parseInt($('#shippingCost').text());
+                            $('.total-price').text(cardPrice + shippingCost);
+                            //console.log(cardPrice)
+                        }
+                    },
+                    error: function (xhr, status, error){
+
+                    }
+                })
+            }
+
+            ajaxRequest(url)
+
+
+            villeSelector.on('change', function(){
+                const urlUpdated = `http://127.0.0.1:8000/city/${$(this).val()}/shipping/cost` ;
+                ajaxRequest(urlUpdated)
+
+            })
+        })
+    </script>
 {% endblock %}
