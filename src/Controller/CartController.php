@@ -22,8 +22,8 @@ final class CartController extends AbstractController
 
         foreach ($cart as $id => $quantity) {
             $cartWithData[] = [
-                'produit' => $this->produitsRepository->find($id),
-                'quantite' => $quantity
+                'produit' =>$this->produitsRepository->find($id),
+                'quantite' =>$quantity
             ];
         }
 
