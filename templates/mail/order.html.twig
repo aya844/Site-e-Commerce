@@ -1,0 +1,43 @@
+<div style="font-family: Arial, sans-serif; font-size: 14px; color: #333; background-color: #f9f9f9; padding: 30px;">
+    <div style="max-width: 600px; margin: auto; background: #fff; border: 1px solid #ddd; border-radius: 5px; padding: 20px;">
+
+        <h1 style="font-size: 22px; color: #222; margin-bottom: 15px;">
+            Confirmation de votre commande n° {{ order.id }}
+        </h1>
+
+        <p style="font-size: 16px; color: #555; margin-bottom: 25px;">
+            Merci pour votre commande !<br>
+            Date : {{ order.createdAt|date("d/m/Y H:i") }}
+        </p>
+
+        <h2 style="font-size: 18px; color: #222; border-bottom: 2px solid #eee; padding-bottom: 8px; margin-bottom: 20px;">
+            Détails de la commande
+        </h2>
+
+        {% for product in order.produitsCommandes %}
+            <div style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                <strong style="font-size: 16px; color: #000;">{{ product.produit.nom }}</strong><br>
+
+                <span style="font-weight: bold;">
+          Prix unitaire: {{ product.produit.prix }} DT &nbsp;&nbsp;|&nbsp;&nbsp; Quantité: {{ product.quantite }} &nbsp;&nbsp;|&nbsp;&nbsp; Total: {{ product.quantite * product.produit.prix }} DT
+        </span>
+            </div>
+        {% endfor %}
+
+        <div style="margin-top: 30px; padding-top: 15px; border-top: 2px solid #ddd; font-size: 16px;">
+            <div style="margin-bottom: 8px;">
+                <strong>Frais de livraison :</strong> <span style="float: right; font-weight: bold;">{{ order.ville.shippingCost }} DT</span>
+            </div>
+            <div>
+                <strong>Total à payer :</strong> <span style="float: right; font-weight: bold; font-size: 18px;">{{ order.prixTotal }} DT</span>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+
+        <p style="font-size: 14px; color: #555; line-height: 1.5; margin-top: 40px;">
+            Si vous avez des questions, n'hésitez pas à nous contacter.<br>
+            Merci de votre confiance !
+        </p>
+
+    </div>
+</div>

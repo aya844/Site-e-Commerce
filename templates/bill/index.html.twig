@@ -1,0 +1,110 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 20px;
+    }
+
+    h4, h6 {
+        margin-bottom: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        border: 1px solid #000;
+        padding: 6px 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f0f0f0;
+    }
+
+    .no-border {
+        border: none;
+    }
+
+    .summary-table {
+        width: 300px;
+    }
+
+    .summary-table td {
+        font-weight: bold;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+</style>
+
+<div>
+
+
+    <h1>Facture - Commande n° {{ order.id }}</h1>
+    <p>Date: {{ order.createdAt|date }}</p>
+
+    <h4>Informations du client</h4>
+    <table>
+        <tr>
+            <th>Nom</th>
+            <td>{{ order.firstName }}</td>
+        </tr>
+        <tr>
+            <th>Prénom</th>
+            <td>{{ order.lastName }}</td>
+        </tr>
+        <tr>
+            <th>Téléphone</th>
+            <td>{{ order.telephone }}</td>
+        </tr>
+        <tr>
+            <th>Adresse</th>
+            <td>{{ order.addresse }}</td>
+        </tr>
+        <tr>
+            <th>Ville</th>
+            <td>{{ order.ville.name }}</td>
+        </tr>
+    </table>
+
+    <h4>Détails de la commande</h4>
+    <table>
+        <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Description</th>
+            <th>PU</th>
+            <th>Qté</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in order.produitsCommandes %}
+            <tr>
+                <td>{{ product.produit.nom }}</td>
+                <td>{{ product.produit.description|slice(0,50) }}{% if product.produit.description|length > 50 %}...{% endif %}</td>
+                <td>{{ product.produit.prix }} DT</td>
+                <td>{{ product.quantite }}</td>
+                <td>{{ product.quantite * product.produit.prix }} DT</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <table class="summary-table">
+        <tr>
+            <th>Frais de livraison</th>
+            <td class="text-right">{{ order.ville.shippingCost }} DT</td>
+        </tr>
+        <tr>
+            <th>Total à payer</th>
+            <td class="text-right">{{ order.prixTotal }} DT</td>
+        </tr>
+    </table>
+</div>
