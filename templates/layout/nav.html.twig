@@ -1,6 +1,47 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
-        <a class="navbar-brand" href="#">My shop</a>
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+        <!-- Navbar Brand -->
+        <a href="#" class="navbar-brand brand-wrapper" title="Your garden (Tunisian Arabic)">
+            <span class="flower-emoji" aria-label="flower" role="img">🌺</span>
+            <span class="gradient-text">Jnintek</span>
+        </a>
+
+        <!-- Styles -->
+        <style>
+            .brand-wrapper {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                gap: 8px; /* space between emoji and text */
+            }
+
+            .flower-emoji {
+                font-size: 28px; /* size of the emoji */
+                line-height: 1;
+            }
+
+            .gradient-text {
+                font-family: 'Pacifico', cursive;
+                font-size: 1.8rem;
+                background: linear-gradient(90deg, #2ecc71, #27ae60);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                color: transparent;
+                letter-spacing: 1px;
+                transition: filter 0.3s ease;
+                cursor: pointer;
+            }
+
+            .gradient-text:hover {
+                filter: brightness(1.1);
+            }
+        </style>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

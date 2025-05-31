@@ -98,16 +98,25 @@ final class ProduitsController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_produits_delete', methods: ['POST'])]
-    public function delete(Request $request, Produits $produit, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Produits $produit, EntityManagerInterface $entityManager, AjouterhistoriqueproduitRepository $ajouterhistoriqueproduitRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
+
+            $histories = $ajouterhistoriqueproduitRepository->findBy(['produit' => $produit]);
+            foreach ($histories as $history) {
+                $entityManager->remove($history);
+            }
+
+
             $entityManager->remove($produit);
             $entityManager->flush();
+
             $this->addFlash('danger', 'votre produit a été supprimé');
         }
 
         return $this->redirectToRoute('app_produits_index', [], Response::HTTP_SEE_OTHER);
     }
+
 
     #[Route('/add/product/{id}/stock', name: 'app_produits_stock_add', methods: ['POST','GET'])]
     public function addStock($id, EntityManagerInterface $entityManager,Request $request , ProduitsRepository $ProduitsRepository): Response

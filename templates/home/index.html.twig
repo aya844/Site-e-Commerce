@@ -15,7 +15,7 @@
                     <h5 class="card-title">{{ produit.nom }}</h5>
                 </a>
                 <p class="card-text">{{ produit.description|slice(0,60) }} ..</p>
-                <h3>{{ produit.prix }} EUR</h3>
+                <h3>{{ produit.prix }} DT</h3>
                 <a href="{{ path('app_cart_new', {'id': produit.id}) }}" class="btn btn-outline-success">Ajouter au panier</a>
             </div>
         </div>
