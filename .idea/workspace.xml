@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="afficher supprimer les utilisateurs et modifier leur role">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,11 +191,12 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PS-251.25410.148" />
-        <option value="bundled-php-predefined-a98d8de5180a-c5828cf854d9-com.jetbrains.php.sharedIndexes-PS-251.25410.148" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PS-243.26053.13" />
+        <option value="bundled-php-predefined-a98d8de5180a-1ec7b7818973-com.jetbrains.php.sharedIndexes-PS-243.26053.13" />
       </set>
     </attachedChunks>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="StructureViewState">
     <option name="selectedTab" value="Twig" />
   </component>
@@ -208,6 +210,8 @@
       <workItem from="1748509244182" duration="62000" />
       <workItem from="1748510129381" duration="1390000" />
       <workItem from="1748512787024" duration="15990000" />
+      <workItem from="1748535495412" duration="606000" />
+      <workItem from="1748678031092" duration="2027000" />
     </task>
     <task id="LOCAL-00001" summary="afficher supprimer les utilisateurs et modifier leur role">
       <option name="closed" value="true" />
