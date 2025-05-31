@@ -1,0 +1,36 @@
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n###> symfony/framework-bundle ###\r\n/.env.local\r\n/.env.local.php\r\n/.env.*.local\r\n/config/secrets/prod/prod.decrypt.private.php\r\n/public/bundles/\r\n/var/\r\n/vendor/\r\n###< symfony/framework-bundle ###\r\n\r\n###> phpunit/phpunit ###\r\n/phpunit.xml\r\n.phpunit.result.cache\r\n###< phpunit/phpunit ###\r\n\r\n###> symfony/phpunit-bridge ###\r\n.phpunit.result.cache\r\n/phpunit.xml\r\n###< symfony/phpunit-bridge ###\r\n\r\n###> symfony/asset-mapper ###\r\n/public/assets/\r\n/assets/vendor/\r\n###< symfony/asset-mapper ###\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	(revision a82224cf9ea77fd202a8e39d17b0b8b33b17606f)
++++ b/.gitignore	(date 1748521739760)
+@@ -1,5 +1,6 @@
+ 
+ ###> symfony/framework-bundle ###
++/.env
+ /.env.local
+ /.env.local.php
+ /.env.*.local
+Index: .env
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># In all environments, the following files are loaded if they exist,\r\n# the latter taking precedence over the former:\r\n#\r\n#  * .env                contains default values for the environment variables needed by the app\r\n#  * .env.local          uncommitted file with local overrides\r\n#  * .env.$APP_ENV       committed environment-specific defaults\r\n#  * .env.$APP_ENV.local uncommitted environment-specific overrides\r\n#\r\n# Real environment variables win over .env files.\r\n#\r\n# DO NOT DEFINE PRODUCTION SECRETS IN THIS FILE NOR IN ANY OTHER COMMITTED FILES.\r\n# https://symfony.com/doc/current/configuration/secrets.html\r\n#\r\n# Run \"composer dump-env prod\" to compile .env files for production use (requires symfony/flex >=1.2).\r\n# https://symfony.com/doc/current/best_practices.html#use-environment-variables-for-infrastructure-configuration\r\n\r\n###> symfony/framework-bundle ###\r\nAPP_ENV=dev\r\nAPP_SECRET=38c144518bbfc60b0f55941a3077636e653bebf60c682650b277cbf297bddc2b\r\n###< symfony/framework-bundle ###\r\n\r\n###> doctrine/doctrine-bundle ###\r\n# Format described at https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url\r\n# IMPORTANT: You MUST configure your server version, either here or in config/packages/doctrine.yaml\r\n#\r\n# DATABASE_URL=\"sqlite:///%kernel.project_dir%/var/data_%kernel.environment%.db\"\r\n#DATABASE_URL=\"mysql://app:!ChangeMe!@127.0.0.1:3306/app?serverVersion=8.0.32&charset=utf8mb4\"\r\n#DATABASE_URL=\"mysql://root:@localhost/my_shop_dev?serverVersion=10.11.2-MariaDB&charset=utf8mb4\"\r\n\r\nDATABASE_URL=\"mysql://root:@localhost/my_shop_dev?serverVersion=MariaDB-10.4.32&charset=utf8mb4\"\r\n\r\n#DATABASE_URL=\"postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=16&charset=utf8\"\r\n###< doctrine/doctrine-bundle ###\r\n\r\n###> symfony/messenger ###\r\n# Choose one of the transports below\r\n# MESSENGER_TRANSPORT_DSN=amqp://guest:guest@localhost:5672/%2f/messages\r\n# MESSENGER_TRANSPORT_DSN=redis://localhost:6379/messages\r\nMESSENGER_TRANSPORT_DSN=doctrine://default?auto_setup=0\r\n###< symfony/messenger ###\r\n\r\n###> symfony/mailer ###\r\nMAILER_DSN=null://null\r\n###< symfony/mailer ###\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.env b/.env
+--- a/.env	(revision a82224cf9ea77fd202a8e39d17b0b8b33b17606f)
++++ b/.env	(date 1748521168779)
+@@ -27,7 +27,7 @@
+ #DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/app?serverVersion=8.0.32&charset=utf8mb4"
+ #DATABASE_URL="mysql://root:@localhost/my_shop_dev?serverVersion=10.11.2-MariaDB&charset=utf8mb4"
+ 
+-DATABASE_URL="mysql://root:@localhost/my_shop_dev?serverVersion=MariaDB-10.4.32&charset=utf8mb4"
++DATABASE_URL="mysql://root@localhost:3307/my_shop_dev?serverVersion=MariaDB-10.4.32&charset=utf8mb4"
+ 
+ #DATABASE_URL="postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=16&charset=utf8"
+ ###< doctrine/doctrine-bundle ###
