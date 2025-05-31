@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OrderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
@@ -32,6 +34,23 @@ class Order
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     private ?City $ville = null;
+
+    #[ORM\Column]
+    private ?bool $payOnDelivery = null;
+
+    /**
+     * @var Collection<int, ProduitsCommande>
+     */
+    #[ORM\OneToMany(targetEntity: ProduitsCommande::class, mappedBy: 'commande', orphanRemoval: true)]
+    private Collection $produitsCommandes;
+
+    #[ORM\Column]
+    private ?float $prixTotal = null;
+
+    public function __construct()
+    {
+        $this->produitsCommandes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -108,6 +127,60 @@ class Order
     public function setVille(?City $ville): static
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function isPayOnDelivery(): ?bool
+    {
+        return $this->payOnDelivery;
+    }
+
+    public function setPayOnDelivery(bool $payOnDelivery): static
+    {
+        $this->payOnDelivery = $payOnDelivery;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProduitsCommande>
+     */
+    public function getProduitsCommandes(): Collection
+    {
+        return $this->produitsCommandes;
+    }
+
+    public function addProduitsCommande(ProduitsCommande $produitsCommande): static
+    {
+        if (!$this->produitsCommandes->contains($produitsCommande)) {
+            $this->produitsCommandes->add($produitsCommande);
+            $produitsCommande->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduitsCommande(ProduitsCommande $produitsCommande): static
+    {
+        if ($this->produitsCommandes->removeElement($produitsCommande)) {
+            // set the owning side to null (unless already changed)
+            if ($produitsCommande->getCommande() === $this) {
+                $produitsCommande->setCommande(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPrixTotal(): ?float
+    {
+        return $this->prixTotal;
+    }
+
+    public function setPrixTotal(float $prixTotal): static
+    {
+        $this->prixTotal = $prixTotal;
 
         return $this;
     }

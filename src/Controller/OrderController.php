@@ -6,6 +6,7 @@ use App\Entity\Order;
 use App\Entity\City;
 use App\Form\TypeDeCommandeForm;
 use App\Repository\ProduitsRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,12 @@ use Symfony\Component\Routing\Attribute\Route;
 final class OrderController extends AbstractController
 {
     #[Route('/order', name: 'app_order')]
-    public function index(Request $request, SessionInterface $session, ProduitsRepository $produitsRepository): Response
+    public function index(Request $request,
+        SessionInterface $session,
+        ProduitsRepository $produitsRepository,
+        EntityManagerInterface $entityManager,
+        Cart $cart,
+    ): Response
     {
         $cart = $session->get('cart', []);
         $cartWithData = [];
@@ -33,6 +39,12 @@ final class OrderController extends AbstractController
         $order = new Order();
         $form = $this->createForm(TypeDeCommandeForm::class ,$order);
         $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            if($order->isPayOnDelivery()){
+
+            }
+        }
 
         return $this->render('order/index.html.twig', [
             'form'=>$form->createView(),

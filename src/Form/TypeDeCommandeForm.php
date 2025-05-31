@@ -44,6 +44,8 @@ class TypeDeCommandeForm extends AbstractType
                     'class'=>'form form-control'
                 ]
             ])
+
+            ->add('payOnDelivery', null, ['label'=>'Payer à la livraison'])
         ;
     }
 

@@ -32,7 +32,7 @@
             <br><br>
             <h2>Totale : {{ total }} DT</h2>
             <div class="row">
-                <a href="" class="btn btn-primary col-2 m-lg-1">Valider la commande</a>
+                <a data-turbo="false" href="{{ path('app_order') }}" class="btn btn-primary col-2 m-lg-1">Valider la commande</a>
                 <a href="{{ path('app_cart_remove') }}" class="btn btn-outline-danger col-2 m-lg-1">Supprimer le panier</a>
             </div>
         {% endif %}
