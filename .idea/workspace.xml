@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c0ca68a-10e2-46d1-9f10-f49e96a8b06a" name="Changes" comment="updtaed database">
-      <change afterPath="$PROJECT_DIR$/templates/order/orderMessage.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/stripe/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Site-e-Commerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Site-e-Commerce.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/filter.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/filter.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,6 +170,7 @@
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -219,7 +228,8 @@
       <workItem from="1748510129381" duration="1390000" />
       <workItem from="1748512787024" duration="15990000" />
       <workItem from="1748548516797" duration="6364000" />
-      <workItem from="1748699540743" duration="4367000" />
+      <workItem from="1748699540743" duration="5320000" />
+      <workItem from="1748767409405" duration="5852000" />
     </task>
     <task id="LOCAL-00001" summary="afficher supprimer les utilisateurs et modifier leur role">
       <option name="closed" value="true" />

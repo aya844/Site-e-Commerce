@@ -1,15 +1,32 @@
 <?php
 
 namespace App\Service;
+use \Stripe\Stripe;
 
 class StripePayment
 {
     public $redirectUrrl;
     public function __construct(){
-        $stripe::setApiKey($_SERVER['STRIPE_SECRET']);
+        Stripe::setApiKey($_SERVER['STRIPE_SECRET']);
         Stripe::setApiVersion('2025-05-28');
     }
     public function startPayment($cart,$shippingcost){
+        $cartProducts = $cart['cart'];
+        $products =[
+            [
+                'quantity'=>1,
+                'price'=> $shippingcost,
+                'name'=>"frais de livraison",
+            ]
+        ];
+        foreach ($cartProducts as $value){
+            $productItem = [];
+            $productItem['name'] = $value['product']->getName();
+            $productItem['price'] = $value['product']->getPrice();
+            $productItem['quantity'] = $value['quantity'];
+            $products[] = $productItem;
+        }
+
         $session= Session::create([
             'line_items' => [
                 array_map(fn(array$product)=>[
@@ -30,7 +47,9 @@ class StripePayment
             'shipping_address_collection' => [
                 'allowed_countries' => ['FR', 'CM', 'SN', 'CI', 'BJ', 'TG', 'ML', 'NE', 'BF', 'GN', 'GA'],
             ],
-            'metadata'=>[]
+            'metadata'=>[
+
+            ]
         ]);
         $this->redirectUrrl = $session->url;
     }

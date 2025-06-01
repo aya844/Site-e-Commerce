@@ -47,7 +47,6 @@ final class OrderController extends AbstractController
                 if (!empty($data['total'])) {
                     $order->setPrixTotal($data['total']);
                     $order->setCreatedAt(new \DateTimeImmutable());
-
                     $entityManager->persist($order);
                     $entityManager->flush($order);
 
@@ -59,30 +58,30 @@ final class OrderController extends AbstractController
                         $entityManager->persist($produitCommande);
                         $entityManager->flush();
                     }
-
-
-                    $entityManager->flush();
-
-                    $entityManager->refresh($order);
-
-                    $session->set('cart', []);
-
-                    $html = $this->renderView('mail/order.html.twig', [
-                        'order' => $order,
-                    ]);
-
-                    $email = (new Email())
-                        ->from('Jnintek@gmail.com')
-                        ->to($order->getEmail())
-                        ->subject('Confirmation de reception de la commande')
-                        ->html($html);
-                    $this->mailer->send($email);
-
-                    return $this->redirectToRoute('order-ok-message');
                 }
+
+                    //$entityManager->flush();
+
+                    //$entityManager->refresh($order);
+
+                $session->set('cart', []);
+
+                $html = $this->renderView('mail/order.html.twig', [
+                    'order' => $order,
+                ]);
+
+                $email = (new Email())
+                    ->from('Jnintek@gmail.com')
+                    ->to($order->getEmail())
+                    ->subject('Confirmation de reception de la commande')
+                    ->html($html);
+                $this->mailer->send($email);
+
+                return $this->redirectToRoute('order-ok-message');
             }
             $payment=new StripePayment();
-            $payment->startPayment($data);
+            $shippingCost = $order->getVille()->getShippingCost();
+            $payment->startPayment($data, $shippingCost);
             $stripeRedirectUrl = $payment->getStripeRedirectUrl();
             //dd($stripeRedirectUrl);
             return header('Location:'.$stripeRedirectUrl);
