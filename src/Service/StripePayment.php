@@ -1,62 +1,67 @@
 <?php
 
 namespace App\Service;
-use \Stripe\Stripe;
+
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
 
 class StripePayment
 {
-    public $redirectUrrl;
-    public function __construct(){
+    public $redirectUrl;  // Fixed typo in variable name
+
+    public function __construct() {
         Stripe::setApiKey($_SERVER['STRIPE_SECRET']);
-        Stripe::setApiVersion('2025-05-28');
+        Stripe::setApiVersion('2024-06-20');
     }
-    public function startPayment($cart,$shippingcost){
+
+    public function startPayment($cart, $shippingCost) {
         $cartProducts = $cart['cart'];
-        $products =[
+        $products = [
             [
-                'quantity'=>1,
-                'price'=> $shippingcost,
-                'name'=>"frais de livraison",
+                'quantity' => 1,  // Correct parameter name
+                'price' => $shippingCost,
+                'name' => "Frais de livraison",  // Correct parameter name
             ]
         ];
-        foreach ($cartProducts as $value){
-            $productItem = [];
-            $productItem['name'] = $value['product']->getName();
-            $productItem['price'] = $value['product']->getPrice();
-            $productItem['quantity'] = $value['quantity'];
+
+        foreach ($cartProducts as $value) {
+            $productItem = [
+                'quantity' => $value['quantite'],
+                'price' => $value['produit']->getPrix(),
+                'name' => $value['produit']->getNom(),  // Correct parameter name
+            ];
             $products[] = $productItem;
         }
 
-        $session= Session::create([
-            'line_items' => [
-                array_map(fn(array$product)=>[
-                    'quantity' => $product['quantite'],
-                    'price_data' => [
-                        'currency' => 'DT',
-                        'product_data' => [
-                            'name' => $product['nom'],
-                        ],
-                        'unit_amount' => $product['prix'] * 100,
+        $lineItems = array_map(function(array $product) {
+            return [
+                'quantity' => $product['quantity'],
+                'price_data' => [
+                    'currency' => 'eur',  // Use valid currency code
+                    'product_data' => [
+                        'name' => $product['name'],
                     ],
-                ], $products)
-            ],
+                    'unit_amount' => $product['price'] * 100,
+                ],
+            ];
+        }, $products);
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => $lineItems,
             'mode' => 'payment',
             'success_url' => 'http://127.0.0.1:8000/pay/success',
             'cancel_url' => 'http://127.0.0.1:8000/pay/cancel',
-            'billing_address_collection'=>'required',
+            'billing_address_collection' => 'required',
             'shipping_address_collection' => [
                 'allowed_countries' => ['FR', 'CM', 'SN', 'CI', 'BJ', 'TG', 'ML', 'NE', 'BF', 'GN', 'GA'],
             ],
-            'metadata'=>[
-
-            ]
         ]);
-        $this->redirectUrrl = $session->url;
+
+        $this->redirectUrl = $session->url;
     }
-    public function getStripeRedirectUrl()
-    {
-        return $this->redirectUrrl;
+
+    public function getStripeRedirectUrl() {
+        return $this->redirectUrl;
     }
 }
-
-

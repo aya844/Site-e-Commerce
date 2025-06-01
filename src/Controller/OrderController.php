@@ -60,9 +60,9 @@ final class OrderController extends AbstractController
                     }
                 }
 
-                    //$entityManager->flush();
+                //$entityManager->flush();
 
-                    //$entityManager->refresh($order);
+                //$entityManager->refresh($order);
 
                 $session->set('cart', []);
 
@@ -84,8 +84,7 @@ final class OrderController extends AbstractController
             $payment->startPayment($data, $shippingCost);
             $stripeRedirectUrl = $payment->getStripeRedirectUrl();
             //dd($stripeRedirectUrl);
-            return header('Location:'.$stripeRedirectUrl);
-
+            return $this->redirect($stripeRedirectUrl);
             //return $this->redirect($stripeRedirectUrl);
 
         }
