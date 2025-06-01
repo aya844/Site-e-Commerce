@@ -9,6 +9,7 @@ use App\Repository\OrderRepository;
 use App\Service\Cart;
 use App\Form\TypeDeCommandeForm;
 use App\Repository\ProduitsRepository;
+use App\Service\StripePayment;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -48,6 +49,7 @@ final class OrderController extends AbstractController
                     $order->setCreatedAt(new \DateTimeImmutable());
 
                     $entityManager->persist($order);
+                    $entityManager->flush($order);
 
                     foreach ($data['cart'] as $value) {
                         $produitCommande = new ProduitsCommande();
@@ -55,6 +57,7 @@ final class OrderController extends AbstractController
                         $produitCommande->setProduit($value['produit']);
                         $produitCommande->setQuantite($value['quantite']);
                         $entityManager->persist($produitCommande);
+                        $entityManager->flush();
                     }
 
 
@@ -78,6 +81,14 @@ final class OrderController extends AbstractController
                     return $this->redirectToRoute('order-ok-message');
                 }
             }
+            $payment=new StripePayment();
+            $payment->startPayment($data);
+            $stripeRedirectUrl = $payment->getStripeRedirectUrl();
+            //dd($stripeRedirectUrl);
+            return header('Location:'.$stripeRedirectUrl);
+
+            //return $this->redirect($stripeRedirectUrl);
+
         }
 
         return $this->render('order/index.html.twig', [
